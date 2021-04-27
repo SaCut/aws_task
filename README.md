@@ -57,8 +57,42 @@
 - then `node app.js`
 - if everithing worked, you should be able to go to `http://APP_PUBLIC_IP/posts` and see the content, from anywhere in the world
 
+### What is a VPC
+- VPC virtual private cloud to define and control virtual networ
+- VPC enables you to launch AWS resources into a virtual network that you've. This virtual network closely resembles a traditionl network that you'd operate in your data centre
+- It allows us to EC2 instances to communicate with each other, we can also create multiple subnets within out VPC
+- it benefits us with scalability of infrastruture of AWS
+
+### Internet gateway
+- Inetnet is the point which allowed us to connect to Internet
+- A gateway that you attach to your VPC to enable communication between resources in your VPC and the internet
+
+### What is a Subnet
+- Network inside the VPC, they make network more sufficient 
+- A range of IP addressess in your VPC 
+- A subnet could have multiple ec2 instances
+
+### Route Table
+- Set of rules, called routes
+- Route tables are used to determine where external network traffice is directed 
+
+### NACLS
+- NACLS are an added layer of defence they work at the network level
+- NACLs are stateles, you have to have rules to allow the request to come in and to allow the response to go back out
 
 
+### What is Security Group
+- Security groups work as a firewall on the instance level
+- They are attached to the VPC and subnet
+- They have inbound and outbound traffic rules defined 
+- Security groups are stateful, if you allowed inbount rule that will automatically be allowed outbound
+ 
+ ### What are the Ephemeral ports
+- They are shortly lived ports, they are automatically allocated based on the demand
+- Allows outbound responses to clients on the internet
+- they range from 1024-65535
+
+https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html
 
 
 
