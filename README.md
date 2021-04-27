@@ -91,12 +91,9 @@
 
 #### Private NACLs Inbound Rules
 - Inbound rules
-
-
-
-
+- 
 - outbount rules
-
+- 
 
 ### What is Security Group
 - Security groups work as a firewall on the instance level
@@ -111,7 +108,34 @@
 
 https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html
 
-
-
-
-
+#### Bastion
+- A bastion host is a server instance itself that you must SSH into before you are able to SSH into any of the other servers in your VPC.
+- Bastion allows a more secure way of getting into your servers because they become accessible only from Bastion.
+- ![img](https://dmhnzl5mp9mj6.cloudfront.net/security_awsblog/images/NM_diagram_061316_a.png)
+- To set up a bastion server:
+- Create a server instance the usual way
+- Its Security Group needs to be connected with the internet gateway of the VPC
+- Its needs to have an SSH connection rule with all the personal IPs of the eventual users
+- Allow an SSH inbound connection on the Security Groups of the machines to be connected
+- after that, we need a config file on the local machine, with these commands:
+- `touch ~/.ssh/config`
+- 
+```shell
+echo "Host bastion
+    Hostname PUBLIC_BASTION_IP
+    User ubuntu
+    IdentityFile ~/.ssh/NAME_OF_THE_PEM_FILE.pem
+    ForwardAgent yes" | tee ~/.ssh/config
+```
+- Then run `ssh bastion`, and you should be allowed inside the bastion instance
+- Here, run `touch ~/.ssh/config`
+- 
+```shell
+echo "Host app
+    Hostname APP_PRIVATE_IP
+    user ubuntu
+Host db
+    Hostname DB_PRIVATE_IP
+    user ubuntu" | tee ~/.ssh/config
+```
+- Now you should be able to run `ssh app`/`ssh db` to ssh into the shells of the two instances
