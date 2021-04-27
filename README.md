@@ -44,7 +44,7 @@
 - add another rule, HTTP connections from anywhere (this will need to be changed later, otherwise the db will be open to the world, which is not what we want)
 - add sensible descriptions if needed
 - Go to the next page, then finally launch the instance
-- SSH into the machine from command line with this command: `ssh ~/.ssh/NAME_OF_THE_PEM_FILE.pem NAME_OF_YOUR_INSTANCE@INSTANCE_PUBLIC_IP_ADDRESS`
+- SSH into the machine from command line with this command: `ssh -io ~/.ssh/NAME_OF_THE_PEM_FILE.pem ProxyCommand="ssh -i ~/.ssh/NAME_OF_THE_PEM_FILE.pem -W %h:%p NAME_OF_YOUR_INSTANCE@APP_PUBLIC_IP" NAME_OF_YOUR_INSTANCE@INSTANCE_PUBLIC_IP_ADDRESS`
 - transfer a folder to your instance with this command `scp -ri ~/.ssh/NAME_OF_THE_PEM_FILE.pem /FOLDER_TO_BE_COPIED_PATH NAME_OF_YOUR_INSTANCE@INSTANCE_PUBLIC_IP_ADDRESS`
 - find your provision file and run it with `sudo /PATH_TO_FILE/PROVISION_NAME.sh`
 - this should be done
@@ -78,7 +78,24 @@
 
 ### NACLS
 - NACLS are an added layer of defence they work at the network level
-- NACLs are stateles, you have to have rules to allow the request to come in and to allow the response to go back out
+- NACLs are stateless, you have to have rules to allow the request to come in and to allow the response to go back out
+- Public NACLs Inbound Rules
+- 100 Allows inbound HTTP 80 traffic from any IPv4 address.
+- 110 Allows inbound SSH 22 traffic from your network over the internet
+- 120 allows inbount return traffic from hosts on the internet that are responding to requests originating in the subnet - TCP 1024-65535
+
+#### NACLs outbound Rules
+- 100 to allow port 80
+- 110 we need the cirdr block and allow 27017 for outbound access to our Mongo DB server in private subnet
+- 120 to allow short lived ports between 1024-65535
+
+#### Private NACLs Inbound Rules
+- Inbound rules
+
+
+
+
+- outbount rules
 
 
 ### What is Security Group
