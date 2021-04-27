@@ -111,7 +111,7 @@ https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html
 #### Bastion
 - A bastion host is a server instance itself that you must SSH into before you are able to SSH into any of the other servers in your VPC.
 - Bastion allows a more secure way of getting into your servers because they become accessible only from Bastion.
-- ![img](https://dmhnzl5mp9mj6.cloudfront.net/security_awsblog/images/NM_diagram_061316_a.png)
+- ![img](https://i.imgur.com/gBWbRe1.png)
 - To set up a bastion server:
 - Create a server instance the usual way
 - Its Security Group needs to be connected with the internet gateway of the VPC
