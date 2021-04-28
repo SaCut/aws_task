@@ -140,3 +140,48 @@ Host db
     user ubuntu" | tee ~/.ssh/config
 ```
 - Now you should be able to run `ssh app`/`ssh db` to ssh into the shells of the two instances
+
+### S3 setup
+- uses cases 
+- who is using S3 in the industry
+- setting up s3, dependencies
+- configure AWSCLI
+- how can we get the authentication done to talk with S3
+- AWS access and secret
+- we will apply crud
+- 53: you will have a backup available to apply CRUD in the console of AWS
+
+**we need running EC2 to ssh into the instance and AWS access and secret key**
+
+- S3 is a Simple storage service provided by AWS
+- It is used to store and retrieve any amount of data, at anytime, from around the world
+- We can also host our static website on 13 
+- Create a bucket from AWSCLIT
+- upload data
+- download data
+- delete data
+- permissons of the bucket
+
+- in order have AWSCLI we need to install the required dependencies
+- python `sudo apt-get install python3`
+- pip `sudo apt-get install python3-pip`
+- aws `sudo apt-get install aws`
+
+- `aws configure` to init aws console, you will need the AWS Access Key ID, AWS Secret Access Key, the default version and the default output format 
+- `aws s3 mb s3://BUCKET_NAME --region eu-west-1` to create a bucket (no capital letters, no underscores, other similar rules)
+- `aws s3 cp README.md s3://BUCKET_NAME` to send files to the bucket
+- `aws s3 sync s3://BUCKET_NAME FILE_NAME` to download files from bucket
+- `aws s3 rm s3://BUCKET_NAME/FILE_NAME` to delete a file from the bucket
+- `aws s3 rb s3://BUCKET_NAME` to remove the bucket
+
+##### available AWS s3 command list
+- `cp` copy item
+- `ls` list buckets
+- `mb` make bucket
+- `mv` move item
+- `presign`
+- `rm` remove item
+- `rb` remove bucket
+- `sync` pull the content of the bucket to the local machine
+- `website`
+
