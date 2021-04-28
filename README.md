@@ -9,6 +9,7 @@
 - share the IP in the chat
 
 ### Tro-tier deployment on AWS
+- ![img](https://i.imgur.com/VGDPtyL.png)
 
 ### EC2 instance for our App
 - Go to AWS EC2 service
