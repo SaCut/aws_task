@@ -163,8 +163,8 @@ Host db
 - permissons of the bucket
 
 - in order have AWSCLI we need to install the required dependencies
-- python `sudo apt-get install python3`
-- pip `sudo apt-get install python3-pip`
+- python `sudo apt-get install python`
+- pip `sudo apt-get install python-pip`
 - aws `sudo apt-get install aws`
 
 - `aws configure` to init aws console, you will need the AWS Access Key ID, AWS Secret Access Key, the default version and the default output format 
